@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Champion League 2025 - Stats & Rankings</title>
+  <link rel="stylesheet" href="styles_jim.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <i class="fas fa-futbol"></i> Champion League 2025
+  </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Fixtures</a>
+    <a href="#">Scores</a>
+    <a href="#">Stats</a>
+    <a href="#">Teams</a>
+  </nav>
+  <div class="search-login">
+    <input type="text" placeholder="Search player or team" />
+    <button class="login-btn">Login</button>
+  </div>
+</header>
+
+<div class="container">
+  <h1>Championship Stats & Rankings</h1>
+
+  <div class="top-bar">
+    <div class="filters">
+      <select><option>Group</option></select>
+      <select><option>Role</option></select>
+      <select><option>Position</option></select>
+      <select><option>Team</option></select>
+      <select><option>Matchday</option></select>
+      <select><option>Sort by: Goals</option></select>
+    </div>
+
+  </div>
+
+  <div class="tabs">
+    <div class="active"><i class="fas fa-futbol"></i> Top Scorers</div>
+    <div><i class="fas fa-hand-holding-medical"></i> Top Assists</div>
+    <div><i class="fas fa-ban"></i> Most Red Cards</div>
+    <div><i class="fas fa-square"></i> Most Yellow Cards</div>
+    <div><i class="fas fa-shield-alt"></i> Goalkeepers</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Goals</th>
+        <th>Matches</th>
+        <th>Goal Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="player-info">
+          <img src="https://via.placeholder.com/40" alt="Player" />
+          <div>John Doe - FW</div>
+        </td>
+        <td>FC Example</td>
+        <td>12</td>
+        <td>10</td>
+        <td><div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td class="player-info">
+          <img src="https://via.placeholder.com/40" alt="Player" />
+          <div>Alex Smith - MF</div>
+        </td>
+        <td>United Stars</td>
+        <td>10</td>
+        <td>11</td>
+        <td><div class="progress-bar"><div class="progress-fill" style="width: 70%"></div></div></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td class="player-info">
+          <img src="https://via.placeholder.com/40" alt="Player" />
+          <div>Marco Villa - FW</div>
+        </td>
+        <td>Real Goals</td>
+        <td>9</td>
+        <td>10</td>
+        <td><div class="progress-bar"><div class="progress-fill" style="width: 65%"></div></div></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td class="player-info">
+          <img src="https://via.placeholder.com/40" alt="Player" />
+          <div>Luis Bravo - FW</div>
+        </td>
+        <td>Goal Kings</td>
+        <td>8</td>
+        <td>12</td>
+        <td><div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button>Previous</button>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>Next</button>
+  </div>
+
+  <div class="view-link"><a href="#">View Team Breakdown</a></div>
+
+  <table class="performance-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Team</th>
+        <th>Played</th>
+        <th>W</th>
+        <th>D</th>
+        <th>L</th>
+        <th>GF</th>
+        <th>GA</th>
+        <th>GD</th>
+        <th>PTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="top">
+        <td>1</td>
+        <td><i class="fas fa-trophy"></i> FC Example</td>
+        <td>10</td>
+        <td>8</td>
+        <td>1</td>
+        <td>1</td>
+        <td>25</td>
+        <td>10</td>
+        <td>+15</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><i class="fas fa-trophy"></i> United Stars</td>
+        <td>10</td>
+        <td>7</td>
+        <td>2</td>
+        <td>1</td>
+        <td>22</td>
+        <td>12</td>
+        <td>+10</td>
+        <td>23</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><i class="fas fa-trophy"></i> Goal Kings</td>
+        <td>10</td>
+        <td>6</td>
+        <td>2</td>
+        <td>2</td>
+        <td>19</td>
+        <td>15</td>
+        <td>+4</td>
+        <td>20</td>
+      </tr>
+      <tr class="bottom">
+        <td>10</td>
+        <td><i class="fas fa-trophy"></i> Bottom FC</td>
+        <td>10</td>
+        <td>1</td>
+        <td>2</td>
+        <td>7</td>
+        <td>8</td>
+        <td>30</td>
+        <td>-22</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="script_jim.js"></script>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Contact</a>
+      <a href="#">Rules</a>
+    </div>
+    <div class="footer-center">
+      © 2025 Champion League. All rights reserved.
+    </div>
+    <div class="footer-right">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+<script src="script_jim.js"></script>
