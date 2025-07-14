@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Ligue de Football</title>
+    <link rel="stylesheet" href="design2.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    
+
+    <div class="login-container animate__animated animate__fadeIn">
+        <div class="icon-top">⚽</div>
+        <h1>Content de te revoir</h1>
+        <p class="subtitle">Connectez-vous pour gérer votre équipe et suivre le championnat</p>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Entrez votre nom d'utilisateur ou votre e-mail</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Entrez votre mot de passe</label>
+                <input type="password" id="password" name="password" required>
+                <div class="password-strength">
+                    <span class="password-strength-label">Solidité du mot de passe :</span>
+                    <span class="password-strength-value" id="passwordStrengthValue">-</span>
+                </div>
+                <div class="password-strength-bar">
+                    <div class="password-strength-progress" id="passwordStrengthProgress"></div>
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#" style="color: var(--primary); text-decoration: none; font-size: 13px;">Mot de passe oublié ?</a>
+                </div>
+            </div>
+            
+            <button type="submit" class="login-btn">Se connecter</button>
+        </form>
+        
+        <div class="register-link">
+            Vous n'avez pas de compte ? <a href="signin.html">S'inscrire</a>
+        </div>
+        
+        <div class="footer">
+            Nous utiliserons vos informations uniquement pour gérer la participation des joueurs
+        </div>
+    </div>
+
+    <script src="web2.js" defer></script>
+   
+</body>
+</html>
