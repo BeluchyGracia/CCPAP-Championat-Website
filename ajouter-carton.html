@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ajouter Carton</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: 40px auto;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    select, input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c0392b;
+    }
+
+    .success-message {
+      margin-top: 20px;
+      background-color: #dff0d8;
+      color: #3c763d;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🟥 Ajouter un Carton</header>
+
+  <div class="container">
+    <h2>Formulaire Carton</h2>
+    <form onsubmit="ajouterCarton(event)">
+      <label for="match">Choisir un match</label>
+      <select id="match" required></select>
+
+      <label for="joueur">Nom du joueur</label>
+      <input type="text" id="joueur" placeholder="Nom complet" required />
+
+      <label for="equipe">Équipe</label>
+      <input type="text" id="equipe" placeholder="Nom de l'équipe" required />
+
+      <label for="couleur">Type de carton</label>
+      <select id="couleur" required>
+        <option value="">-- Choisir --</option>
+        <option value="jaune">🟨 Jaune</option>
+        <option value="rouge">🟥 Rouge</option>
+      </select>
+
+      <label for="minute">Minute (ex: 75)</label>
+      <input type="text" id="minute" placeholder="Ex: 22, 75+2, etc." />
+
+      <button type="submit">Ajouter le Carton</button>
+    </form>
+
+    <div class="success-message" id="message-success">
+      ✅ Carton enregistré avec succès !
+    </div>
+  </div>
+
+  <script>
+    async function chargerMatchs() {
+      const res = await fetch('/matchs');
+      const matchs = await res.json();
+      const select = document.getElementById("match");
+
+      matchs.forEach(m => {
+        const option = document.createElement("option");
+        option.value = m.id;
+        option.textContent = `${m.equipe1} vs ${m.equipe2} - ${m.date}`;
+        select.appendChild(option);
+      });
+    }
+
+    async function ajouterCarton(event) {
+      event.preventDefault();
+
+      const carton = {
+        match_id: document.getElementById("match").value,
+        joueur: document.getElementById("joueur").value,
+        equipe: document.getElementById("equipe").value,
+        couleur: document.getElementById("couleur").value,
+        minute: document.getElementById("minute").value,
+      };
+
+      const res = await fetch('/cartons', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(carton)
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        document.querySelector("form").reset();
+        document.getElementById("message-success").style.display = "block";
+      } else {
+        alert(data.message || "Erreur lors de l’ajout du carton.");
+      }
+    }
+
+    window.onload = chargerMatchs;
+  </script>
+
+</body>
+</html>

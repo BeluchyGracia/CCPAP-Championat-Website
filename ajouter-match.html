@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ajouter un Match</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .container {
+      max-width: 600px;
+      background: white;
+      margin: 40px auto;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1f6391;
+    }
+
+    .success-message {
+      margin-top: 20px;
+      background-color: #dff0d8;
+      color: #3c763d;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>➕ Ajouter un Match</header>
+
+  <div class="container">
+    <h2>Formulaire de Match</h2>
+    <form onsubmit="ajouterMatch(event)">
+      <label for="equipe1">Équipe 1</label>
+      <input type="text" id="equipe1" placeholder="Nom de l'équipe 1" required />
+
+      <label for="equipe2">Équipe 2</label>
+      <input type="text" id="equipe2" placeholder="Nom de l'équipe 2" required />
+
+      <label for="date">Date du match</label>
+      <input type="date" id="date" required />
+
+      <label for="heure">Heure</label>
+      <input type="time" id="heure" required />
+
+      <button type="submit">Ajouter le Match</button>
+    </form>
+
+    <div class="success-message" id="message-success">
+      ✅ Match ajouté avec succès !
+    </div>
+  </div>
+
+  <script>
+    async function ajouterMatch(event) {
+      event.preventDefault();
+
+      const match = {
+        equipe1: document.getElementById("equipe1").value,
+        equipe2: document.getElementById("equipe2").value,
+        date: document.getElementById("date").value,
+        heure: document.getElementById("heure").value
+      };
+
+      const res = await fetch("/matchs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(match)
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        document.querySelector("form").reset();
+        document.getElementById("message-success").style.display = "block";
+      } else {
+        alert(data.message || "Erreur lors de l'ajout du match.");
+      }
+    }
+  </script>
+
+</body>
+</html>
